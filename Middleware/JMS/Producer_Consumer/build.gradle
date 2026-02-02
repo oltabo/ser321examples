@@ -57,7 +57,7 @@ task runProducerJNDI(type: JavaExec) {
   dependsOn arguments
   classpath = sourceSets.main.runtimeClasspath
   description = "Run Producer"
-  main = 'QProducerJNDI'
+  mainClass = 'QProducerJNDI'
   // default args
   args message
 }
@@ -67,7 +67,7 @@ task runConsumer(type: JavaExec) {
   dependsOn arguments
   classpath = sourceSets.main.runtimeClasspath
   description = "Run Consumer"
-  main = 'QConsumer'
+  mainClass = 'QConsumer'
   args jmsHost
   args jmsPort
   args queueName
