@@ -34,7 +34,7 @@ task runHelloWorld(type: JavaExec) {
   dependsOn arguments
   classpath = sourceSets.main.runtimeClasspath
   description = "Hello World"
-  main = 'App'
+  mainClass = 'some.package.MainClass'
   args jmsHost
   args queueName
   args sleepDelay
