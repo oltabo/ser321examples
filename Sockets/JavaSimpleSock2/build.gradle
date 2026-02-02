@@ -11,7 +11,7 @@ task SocketServer(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'SockServer'
+  mainClass = 'SockServer'
 }
 
 task SocketClient(type: JavaExec) {
