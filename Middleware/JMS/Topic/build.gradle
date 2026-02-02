@@ -36,7 +36,7 @@ task runTopicExample(type: JavaExec) {
   dependsOn arguments
   classpath = sourceSets.main.runtimeClasspath
   description = "Run Topic"
-  main = 'TopicExample'
+  mainClass = 'TopicExample'
   standardInput = System.in
   // default args
   args topicName
