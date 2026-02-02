@@ -44,7 +44,7 @@ task runDemoPublisherModel(type: JavaExec) {
   dependsOn arguments
   classpath = sourceSets.main.runtimeClasspath
   description = "Run Publisher"
-  main = 'DemoPublisherModel'
+  mainClass = 'DemoPublisherModel'
   standardInput = System.in
   // default args
   args topicName
@@ -57,7 +57,7 @@ task runDemoSubscriberModel(type: JavaExec) {
   dependsOn arguments
   classpath = sourceSets.main.runtimeClasspath
   description = "Run Subscriber"
-  main = 'DemoSubscriberModel'
+  mainClass = 'DemoSubscriberModel'
   standardInput = System.in
   args topicName
   args clientName
@@ -72,7 +72,7 @@ task runDemoSubscriberModelWithListener(type: JavaExec) {
   classpath = sourceSets.main.runtimeClasspath
   description = "Run Subscriber With Listener"
   standardInput = System.in
-  main = 'DemoSubscriberModelWithListener'
+  mainClass = 'DemoSubscriberModelWithListener'
   args topicName
   args clientName
   args userName

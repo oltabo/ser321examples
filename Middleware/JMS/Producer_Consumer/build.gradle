@@ -44,7 +44,7 @@ task runProducer(type: JavaExec) {
   dependsOn arguments
   classpath = sourceSets.main.runtimeClasspath
   description = "Run Producer"
-  main = 'QProducer'
+  mainClass = 'QProducer'
   // default args
   args jmsHost
   args jmsPort
