@@ -1,21 +1,22 @@
-apply plugin: 'application'
+plugins {
+  id 'application'
+}
 
-mainClassName = 'Multiply'
+repositories {
+  // only needed if you add external dependencies later
+  mavenCentral()
+}
 
-
-// set as java application
-//apply plugin: 'application'
-
-// define main class (modern Gradle syntax)
-//application {
-//  mainClass = 'Multiply'
-//}
+application {
+  // main class for: ./gradlew run
+  mainClass = 'Multiply'
+}
 
 // task which will run Multiply with default parameters,
-// can be overwritten with: gradle runApp --args '3 4'
+// can be overwritten with: ./gradlew runApp --args "3 4"
 tasks.register('runApp', JavaExec) {
   group = 'Multiply tasks'
-  description = 'Tasks which runs Multiply with default parameters'
+  description = 'Task which runs Multiply with default parameters'
 
   classpath = sourceSets.main.runtimeClasspath
   mainClass = 'Multiply'
@@ -26,44 +27,40 @@ tasks.register('runApp', JavaExec) {
 
 // task which will run Multiply with default parameters,
 // but also accepts new parameter this time with given names
-// Example: gradle runAppAgain -Pnum1=9 -Pnum2=10
-// Example2 (this will make Gradle run more quietly in the console):
-//   gradle runAppAgain -Pnum1=9 -Pnum2=10 -q --console=plain
+// Example: ./gradlew runAppAgain -Pnum1=9 -Pnum2=10
+// Example2: ./gradlew runAppAgain -Pnum1=9 -Pnum2=10 -q --console=plain
 tasks.register('runAppAgain', JavaExec) {
   group = 'Multiply tasks'
-  description = 'Tasks which runs Multiply with default parameters or given values'
+  description = 'Task which runs Multiply with default parameters or given values'
 
   classpath = sourceSets.main.runtimeClasspath
   mainClass = 'Multiply'
 
-  // only works if two arguments are provided
-  // Try: using default values in case none or only one parameter is provided
-  if (project.hasProperty('num1') && project.hasProperty('num2')) {
-    args(project.getProperty('num1'), project.getProperty('num2'))
-  } else if (project.hasProperty('num1')) {
-    args(project.getProperty('num1'), '1')
-  } else if (project.hasProperty('num2')) {
-    args('1', project.getProperty('num2'))
+  def n1 = project.findProperty('num1')?.toString()
+  def n2 = project.findProperty('num2')?.toString()
+
+  if (n1 && n2) {
+    args n1, n2
+  } else if (n1) {
+    args n1, '1'
+  } else if (n2) {
+    args '1', n2
   } else {
-    args('1', '2')
+    args '1', '2'
   }
 }
 
-// task that runs the Fraction Main which does not use arguments: gradle runFraction
+// task that runs the Fraction Main which does not use arguments: ./gradlew runFraction
 tasks.register('runFraction', JavaExec) {
   group = 'Fraction Tasks'
-  description = 'Tasks which runs Fraction with no arguments'
+  description = 'Task which runs Fraction with no arguments'
 
   classpath = sourceSets.main.runtimeClasspath
   mainClass = 'Fraction'
 }
 
-// Example how you can add that libraries can be pulled from mavenCentral()
-// repositories {
-//   mavenCentral()
-// }
-
-// Setting dependencies, e.g. when you import JSON in your Java files
+// If you need dependencies later (example):
 // dependencies {
 //   implementation 'org.json:json:20171018'
 // }
+
