@@ -15,7 +15,7 @@ class SockClient {
   public static void main (String args[]) {
     Socket sock = null;
     String host = "localhost";
-    String message = "HI";
+    String message = "Hello from client (my machine)";
     Integer number = 100;
 
     // works with no inputs or 1, 2 or 3
