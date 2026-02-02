@@ -1,10 +1,15 @@
-// set as java application
 apply plugin: 'application'
 
+mainClassName = 'Multiply'
+
+
+// set as java application
+//apply plugin: 'application'
+
 // define main class (modern Gradle syntax)
-application {
-  mainClass = 'Multiply'
-}
+//application {
+//  mainClass = 'Multiply'
+//}
 
 // task which will run Multiply with default parameters,
 // can be overwritten with: gradle runApp --args '3 4'
