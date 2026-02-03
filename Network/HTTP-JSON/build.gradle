@@ -17,7 +17,7 @@ dependencies{
 
 task API(type: JavaExec) {
   classpath = sourceSets.main.runtimeClasspath
-  main = 'API'
+  mainClass = 'API'
   // default args
   args 'kgary' // port 
 }
