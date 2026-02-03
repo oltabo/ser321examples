@@ -2,7 +2,9 @@
 apply plugin: 'application'
 
 //define main class
-mainClass = 'API'
+application {
+  mainClass = 'API'
+}
 
 repositories {
   mavenCentral()
